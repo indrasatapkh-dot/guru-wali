@@ -85,25 +85,53 @@ function setup(){
  document.getElementById("addDevelopment").onclick=()=>{data.development.push({month:months[0],student:"",attendance:"",academic:"",attitude:"",progress:"",problem:"",followup:""});saveRender()};
  document.getElementById("addRecap").onclick=()=>{data.recap.push({date:new Date().toISOString().slice(0,10),student:"",type:"",result:"",followup:""});saveRender()};
  function printOnly(id){
- const allowed=["students","journal","development","recap","monthlyReport","semesterReport"];
- if(!allowed.includes(id)) return;
- const url=new URL(window.location.href);
- url.searchParams.set("print",id);
- window.open(url.toString(),"_blank","noopener,noreferrer");
+ const target=document.getElementById(id);
+ if(!target){alert("Bagian yang akan dicetak tidak ditemukan.");return;}
+ const titles={
+  students:"IDENTITAS MURID DAMPINGAN",
+  journal:"JURNAL PEMBINAAN MURID",
+  development:"PERKEMBANGAN BULANAN",
+  recap:"REKAP PENDAMPINGAN",
+  monthlyReport:"LAPORAN BULANAN PENDAMPINGAN GURU WALI",
+  semesterReport:"LAPORAN SEMESTER BUKU PENDAMPINGAN GURU WALI"
+ };
+ const w=window.open("","_blank","width=1000,height=800");
+ if(!w){alert("Pop-up diblokir. Izinkan pop-up untuk mencetak.");return;}
+ const styles=[...document.querySelectorAll('link[rel="stylesheet"]')].map(x=>`<link rel="stylesheet" href="${x.href}">`).join("");
+ const clone=target.cloneNode(true);
+ clone.querySelectorAll(".toolbar,.actions,.section-footer,.section-chip,button").forEach(e=>e.remove());
+ // For reports, remove the outer section heading so the official report header is the first content.
+ clone.querySelectorAll(".section-heading").forEach(e=>e.remove());
+ const payload=clone.outerHTML;
+ w.document.open();
+ w.document.write(`<!doctype html><html lang="id"><head><meta charset="utf-8"><title>${titles[id]||"Cetak Guru Wali"}</title>${styles}
+ <style>
+ @page{size:A4 portrait;margin:13mm 14mm}
+ html,body{margin:0!important;padding:0!important;background:#fff!important}
+ .print-root{width:100%!important;max-width:none!important;margin:0!important;padding:0!important;box-shadow:none!important;border:0!important}
+ .print-root.panel{display:block!important;min-height:0!important}
+ .table-wrap{overflow:visible!important;border:0!important;box-shadow:none!important}
+ table{width:100%!important;min-width:0!important;border-collapse:collapse!important}
+ th{font-size:8px!important;padding:6px!important}
+ td{font-size:8px!important;padding:5px!important}
+ td input,td select,td textarea{border:0!important;background:transparent!important;box-shadow:none!important;font-size:8px!important;padding:0!important}
+ .report-box{border:0!important;box-shadow:none!important;padding:0!important}
+ .official-letterhead{margin-top:0!important}
+ .official-title{font-size:13px!important}
+ .official-subtitle{font-size:9px!important}
+ .signature-grid{break-inside:avoid!important;page-break-inside:avoid!important}
+ </style></head><body><div class="print-root">${payload}</div></body></html>`);
+ w.document.close();
+ w.onload=()=>setTimeout(()=>{w.focus();w.print();},250);
+ setTimeout(()=>{try{w.focus();w.print()}catch(e){}},1200);
 }
-function runPrintMode(){
- const id=new URLSearchParams(window.location.search).get("print");
- const allowed=["students","journal","development","recap","monthlyReport","semesterReport"];
- if(!allowed.includes(id)) return;
- document.body.setAttribute("data-print",id);
- // Reports are rendered from the normal app state, so wait until rendering completes.
- setTimeout(()=>{
-   window.focus();
-   window.print();
- },700);
-}
-document.getElementById("exportData").onclick=()=>{let a=document.createElement("a");a.href=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:"application/json"}));a.download="backup-buku-guru-wali.json";a.click();setTimeout(()=>URL.revokeObjectURL(a.href),500)};
+document.getElementById("printStudents").onclick=()=>printOnly("students");
+ document.getElementById("printJournal").onclick=()=>printOnly("journal");
+ document.getElementById("printDevelopment").onclick=()=>printOnly("development");
+ document.getElementById("printMonthly").onclick=()=>printOnly("monthlyReport");
+ document.getElementById("printSemester").onclick=()=>printOnly("semesterReport");
+ document.getElementById("exportData").onclick=()=>{let a=document.createElement("a");a.href=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:"application/json"}));a.download="backup-buku-guru-wali.json";a.click();setTimeout(()=>URL.revokeObjectURL(a.href),500)};
  document.getElementById("importData").onchange=e=>{let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=()=>{try{data={...data,...JSON.parse(r.result)};saveRender();alert("Data berhasil dipulihkan.")}catch{alert("File backup tidak valid.")}};r.readAsText(f)};
  document.getElementById("clearData").onclick=()=>{if(confirm("Hapus SEMUA data aplikasi?")){localStorage.removeItem(KEY);location.reload()}};
 }
-load();setup();bindIdentity();renderAll();runPrintMode();
+load();setup();bindIdentity();renderAll();

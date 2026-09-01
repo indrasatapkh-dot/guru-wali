@@ -48,3 +48,7 @@ Sistem cetak diperbaiki dengan membuka lembar cetak khusus untuk bagian yang dip
 
 ## V10
 Perbaikan final cetak: setiap tombol membuka URL mode cetak khusus (`?print=...`) sehingga hanya satu bagian yang ditampilkan pada print preview. Laporan Bulanan dan Laporan Semester tidak lagi dapat ikut tercetak bersama bagian lain.
+
+
+## V11
+Perbaikan utama: semua tombol cetak sekarang memiliki event handler yang aktif dan membuat dokumen cetak terisolasi berisi satu bagian saja. Print Preview tidak menggunakan halaman aplikasi utama.

@@ -201,3 +201,6 @@ footer{background:#eaf4f8}
   }
   body[data-print] .official-letterhead{margin-top:0!important}
 }
+
+/* V11 - isolated popup print */
+.print-root{background:#fff}
