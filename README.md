@@ -1,26 +1,22 @@
-# Buku Pendampingan Guru Wali
-
+# Buku Pendampingan Guru Wali V3
 Aplikasi web statis untuk administrasi Guru Wali SMP.
 
-## Fitur
-- Identitas sekolah/guru/kelas/tahun ajaran/semester
+## Fitur V3
+- Identitas sekolah, guru wali, kelas, tahun ajaran, semester
 - Data murid dampingan
+- Jurnal pembinaan lengkap
 - Perkembangan bulanan
 - Rekap pendampingan
-- Laporan semester
-- Simpan otomatis di browser (LocalStorage)
-- Backup dan Restore JSON
-- Cetak laporan semester
-- Responsive untuk komputer dan HP
+- Laporan bulanan otomatis
+- Laporan semester otomatis
+- Cetak jurnal/laporan
+- Backup dan restore JSON
+- Penyimpanan otomatis di browser
+- Responsif untuk komputer dan HP
 
-## Upload ke GitHub Pages
-1. Buat repository baru di GitHub, misalnya `guru-wali`.
-2. Upload `index.html`, `style.css`, dan `script.js` ke repository.
-3. Buka **Settings → Pages**.
-4. Pada **Build and deployment**, pilih **Deploy from a branch**.
-5. Pilih branch `main` dan folder `/ (root)`, lalu **Save**.
-6. Tunggu proses deployment selesai. URL biasanya:
-   `https://USERNAME.github.io/guru-wali/`
+## Upload GitHub Pages
+Ganti file `index.html`, `style.css`, dan `script.js` di repository Bapak pada branch `utama`.
+Tidak perlu mengubah pengaturan Pages lagi jika Pages sudah aktif.
 
 ## Catatan
-Data yang dimasukkan tersimpan di browser/perangkat masing-masing melalui LocalStorage. Jika ganti perangkat/browser, gunakan menu **Backup data** lalu **Restore data**.
+Data tersimpan pada browser/perangkat. Backup data secara berkala.
