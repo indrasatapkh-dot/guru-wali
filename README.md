@@ -40,3 +40,7 @@ Format administrasi resmi A4: kop sekolah, logo sekolah yang dapat diunggah, nom
 
 ## V8
 Logo resmi yang diunggah pengguna (Lambang Kabupaten Kapuas) sudah disertakan sebagai logo bawaan pada KOP. Logo tetap dapat diganti melalui menu Logo Sekolah.
+
+
+## V9
+Sistem cetak diperbaiki dengan membuka lembar cetak khusus untuk bagian yang dipilih. Jadi Cetak Laporan Bulanan hanya mencetak laporan bulanan, dan Cetak Laporan Semester hanya mencetak laporan semester; bagian lain tidak ikut tercetak.

@@ -141,3 +141,11 @@ footer{background:#eaf4f8}
  body[data-print] #journal .section-heading,
  body[data-print] #development .section-heading{margin-bottom:10px}
 }
+
+/* ===== V9: CETAK BENAR-BENAR TERPISAH ===== */
+.print-page{background:#fff}
+@media print{
+  .print-page{width:100%;margin:0;padding:0}
+  .print-page>.panel{display:block!important}
+  .print-page .section-heading{margin-bottom:12px}
+}
