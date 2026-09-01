@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Buku Pendampingan Guru Wali</title>
+  <meta name="description" content="Aplikasi Buku Pendampingan Guru Wali SMP">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page">
+    <header class="hero">
+      <div class="topline">KURIKULUM MERDEKA · PERMENDIKDASMEN NO. 11/2025</div>
+      <div class="hero-row">
+        <div>
+          <h1>Buku Pendampingan Guru Wali</h1>
+          <p>Catatan digital pendampingan murid — tersimpan otomatis di perangkat ini</p>
+        </div>
+        <div class="save-badge" id="saveBadge">✓<span>TERSIMPAN</span></div>
+      </div>
+
+      <section class="identity-grid">
+        <label>NAMA SEKOLAH<input id="school" value="SMP NEGERI 2 KAPUAS HILIR"></label>
+        <label>NAMA GURU WALI<input id="teacher" value="Indra Arief Rianto, S.Kom"></label>
+        <label>GURU BIDANG STUDI<input id="subject" placeholder="Contoh: IPS"></label>
+        <label>KELAS / MURID DAMPINGAN<input id="className" value="IX"></label>
+        <label>TAHUN AJARAN<input id="schoolYear" value="2026/2027"></label>
+        <label>SEMESTER<select id="semester"><option>Ganjil</option><option>Genap</option></select></label>
+      </section>
+    </header>
+
+    <nav class="tabs">
+      <button class="tab active" data-tab="students">01&nbsp; Identitas Murid</button>
+      <button class="tab" data-tab="monthly">02&nbsp; Perkembangan Bulanan</button>
+      <button class="tab" data-tab="recap">03&nbsp; Rekap Pendampingan</button>
+      <button class="tab" data-tab="report">04&nbsp; Laporan Semester</button>
+    </nav>
+
+    <main>
+      <section id="students" class="panel active">
+        <h2>Identitas murid dampingan</h2>
+        <p class="hint">Diisi satu kali di awal tahun ajaran untuk seluruh murid yang didampingi.</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>NO</th><th>NAMA MURID</th><th>NIS / NISN</th><th>KELAS</th><th>L/P</th><th>KONTAK ORANG TUA</th><th>CATATAN KHUSUS</th><th></th></tr></thead>
+            <tbody id="studentBody"></tbody>
+          </table>
+        </div>
+        <div class="section-footer">
+          <button class="outline-btn" id="addStudent">＋ Tambah murid</button>
+          <strong id="studentCount">0 murid terdaftar</strong>
+        </div>
+      </section>
+
+      <section id="monthly" class="panel">
+        <h2>Perkembangan bulanan</h2>
+        <p class="hint">Catat perkembangan, kehadiran, sikap, prestasi, dan kebutuhan tindak lanjut setiap bulan.</p>
+        <div class="toolbar">
+          <select id="monthFilter"></select>
+          <button class="outline-btn" id="addMonthly">＋ Catatan bulanan</button>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>BULAN</th><th>MURID</th><th>KEHADIRAN</th><th>PERKEMBANGAN / SIKAP</th><th>MASALAH / KEBUTUHAN</th><th>TINDAK LANJUT</th><th></th></tr></thead>
+            <tbody id="monthlyBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="recap" class="panel">
+        <h2>Rekap pendampingan</h2>
+        <p class="hint">Ringkasan kegiatan pembinaan dan komunikasi dengan murid/orang tua.</p>
+        <div class="summary-cards">
+          <div><span id="totalNotes">0</span><small>Total catatan</small></div>
+          <div><span id="totalStudents">0</span><small>Murid dampingan</small></div>
+          <div><span id="totalFollowup">0</span><small>Catatan tindak lanjut</small></div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>NO</th><th>TANGGAL</th><th>MURID</th><th>JENIS PENDAMPINGAN</th><th>HASIL / CATATAN</th><th>TINDAK LANJUT</th><th></th></tr></thead>
+            <tbody id="recapBody"></tbody>
+          </table>
+        </div>
+        <button class="outline-btn" id="addRecap">＋ Tambah pendampingan</button>
+      </section>
+
+      <section id="report" class="panel">
+        <h2>Laporan semester</h2>
+        <p class="hint">Laporan ringkas dibuat dari identitas sekolah, murid, dan catatan pendampingan yang tersimpan.</p>
+        <div class="report-box" id="reportPreview"></div>
+        <div class="actions">
+          <button class="primary-btn" id="printReport">Cetak laporan semester</button>
+          <button class="outline-btn" id="exportData">Backup data</button>
+          <label class="outline-btn file-btn">Restore data<input type="file" id="importData" accept=".json"></label>
+          <button class="danger-btn" id="clearData">Hapus semua data</button>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>Data tersimpan otomatis di penyimpanan lokal perangkat/browser ini.</span>
+      <span>Pengembang: Aplikasi Buku Pendampingan Guru Wali</span>
+    </footer>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
