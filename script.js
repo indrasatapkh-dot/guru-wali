@@ -18,6 +18,10 @@ function bindIdentity(){
   e.addEventListener("change",()=>{data[id]=e.value;save();renderReports()});
  });
  let lf=document.getElementById("logoFile"),ln=document.getElementById("logoName");
+ if(!data.logo){
+  data.logo="logo-kapuas.png";
+  if(ln)ln.textContent="Lambang Kabupaten Kapuas";
+ }
  if(lf)lf.addEventListener("change",()=>{
   let f=lf.files[0];if(!f)return;
   let r=new FileReader();r.onload=()=>{data.logo=r.result;save();if(ln)ln.textContent=f.name;renderReports()};

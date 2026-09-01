@@ -36,3 +36,7 @@ Setiap bagian dapat dicetak sendiri: Identitas Murid, Jurnal Pembinaan, Perkemba
 
 ## V7
 Format administrasi resmi A4: kop sekolah, logo sekolah yang dapat diunggah, nomor laporan, tanggal, nama/NIP Kepala Sekolah, tanda tangan Kepala Sekolah dan Guru Wali. Masing-masing laporan tetap dapat dicetak terpisah.
+
+
+## V8
+Logo resmi yang diunggah pengguna (Lambang Kabupaten Kapuas) sudah disertakan sebagai logo bawaan pada KOP. Logo tetap dapat diganti melalui menu Logo Sekolah.
