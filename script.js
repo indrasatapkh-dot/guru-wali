@@ -3,7 +3,19 @@ const months=["Juli","Agustus","September","Oktober","November","Desember","Janu
 let data={school:"SMP NEGERI 2 KAPUAS HILIR",teacher:"Indra Arief Rianto, S.Kom",subject:"",className:"IX",schoolYear:"2026/2027",semester:"Ganjil",students:[],monthly:[],recap:[]};
 
 function load(){try{const x=JSON.parse(localStorage.getItem(KEY));if(x)data={...data,...x}}catch(e){}}
-function save(){localStorage.setItem(KEY,JSON.stringify(data));document.getElementById("saveBadge").innerHTML="✓<span>TERSIMPAN</span>";renderAll()}
+let saveTimer;
+function save(){
+  localStorage.setItem(KEY,JSON.stringify(data));
+  clearTimeout(saveTimer);
+  saveTimer=setTimeout(()=>{
+    const badge=document.getElementById("saveBadge");
+    if(badge) badge.innerHTML="✓<span>TERSIMPAN</span>";
+  },120);
+}
+function saveAndRender(){
+  save();
+  renderAll();
+}
 function bindIdentity(){
  ["school","teacher","subject","className","schoolYear","semester"].forEach(id=>{
   const el=document.getElementById(id);el.value=data[id]||"";
@@ -27,7 +39,7 @@ function renderStudents(){
  b.querySelectorAll("[data-s]").forEach(el=>el.addEventListener("input",()=>{data.students[el.dataset.s][el.dataset.k]=el.value;save()}));
  document.getElementById("studentCount").textContent=`${data.students.length} murid terdaftar`;
 }
-function deleteStudent(i){if(confirm("Hapus murid ini?")){data.students.splice(i,1);save()}}
+function deleteStudent(i){if(confirm("Hapus murid ini?")){data.students.splice(i,1);saveAndRender()}}
 function renderMonthly(){
  const b=document.getElementById("monthlyBody");const filter=document.getElementById("monthFilter").value||"Semua";
  const rows=data.monthly.map((r,i)=>({...r,i})).filter(r=>filter==="Semua"||r.month===filter);
@@ -41,7 +53,7 @@ function renderMonthly(){
  <td><button class="del" onclick="deleteMonthly(${r.i})">×</button></td></tr>`).join(""):'<tr><td colspan="7" class="empty">Belum ada catatan bulanan.</td></tr>';
  b.querySelectorAll("[data-m]").forEach(el=>el.addEventListener("input",()=>{data.monthly[el.dataset.m][el.dataset.k]=el.value;save()}));
 }
-function deleteMonthly(i){data.monthly.splice(i,1);save()}
+function deleteMonthly(i){data.monthly.splice(i,1);saveAndRender()}
 function renderRecap(){
  const b=document.getElementById("recapBody");
  b.innerHTML=data.recap.length?data.recap.map((r,i)=>`<tr>
@@ -56,7 +68,7 @@ function renderRecap(){
  document.getElementById("totalStudents").textContent=data.students.length;
  document.getElementById("totalFollowup").textContent=data.recap.filter(x=>x.followup?.trim()).length+data.monthly.filter(x=>x.followup?.trim()).length;
 }
-function deleteRecap(i){data.recap.splice(i,1);save()}
+function deleteRecap(i){data.recap.splice(i,1);saveAndRender()}
 function renderReport(){
  const names=data.students.map((s,i)=>`<tr><td>${i+1}</td><td>${esc(s.nama||"-")}</td><td>${esc(s.nisn||"-")}</td><td>${esc(s.kelas||data.className)}</td><td>${esc(s.jk||"-")}</td></tr>`).join("");
  document.getElementById("reportPreview").innerHTML=`<h3>LAPORAN SEMESTER<br>BUKU PENDAMPINGAN GURU WALI</h3>
@@ -69,12 +81,12 @@ function renderAll(){renderStudents();renderMonthly();renderRecap();renderReport
 function setup(){
  const mf=document.getElementById("monthFilter");mf.innerHTML='<option>Semua</option>'+months.map(m=>`<option>${m}</option>`).join("");mf.addEventListener("change",renderMonthly);
  document.querySelectorAll(".tab").forEach(btn=>btn.addEventListener("click",()=>{document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));document.querySelectorAll(".panel").forEach(x=>x.classList.remove("active"));btn.classList.add("active");document.getElementById(btn.dataset.tab).classList.add("active");}));
- document.getElementById("addStudent").onclick=()=>{data.students.push({nama:"",nisn:"",kelas:data.className,jk:"L",kontak:"",catatan:""});save()};
- document.getElementById("addMonthly").onclick=()=>{data.monthly.push({month:months[0],student:"",attendance:"",development:"",problem:"",followup:""});save()};
- document.getElementById("addRecap").onclick=()=>{data.recap.push({date:new Date().toISOString().slice(0,10),student:"",type:"",result:"",followup:""});save()};
+ document.getElementById("addStudent").onclick=()=>{data.students.push({nama:"",nisn:"",kelas:data.className,jk:"L",kontak:"",catatan:""});saveAndRender()};
+ document.getElementById("addMonthly").onclick=()=>{data.monthly.push({month:months[0],student:"",attendance:"",development:"",problem:"",followup:""});saveAndRender()};
+ document.getElementById("addRecap").onclick=()=>{data.recap.push({date:new Date().toISOString().slice(0,10),student:"",type:"",result:"",followup:""});saveAndRender()};
  document.getElementById("printReport").onclick=()=>window.print();
  document.getElementById("exportData").onclick=()=>{const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:"application/json"}));a.download="backup-buku-guru-wali.json";a.click();URL.revokeObjectURL(a.href)};
- document.getElementById("importData").onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{data={...data,...JSON.parse(r.result)};save();alert("Data berhasil dipulihkan.")}catch{alert("File backup tidak valid.")}};r.readAsText(f)};
+ document.getElementById("importData").onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{data={...data,...JSON.parse(r.result)};saveAndRender();alert("Data berhasil dipulihkan.")}catch{alert("File backup tidak valid.")}};r.readAsText(f)};
  document.getElementById("clearData").onclick=()=>{if(confirm("Hapus SEMUA data aplikasi? Data tidak dapat dikembalikan kecuali ada backup.")){localStorage.removeItem(KEY);location.reload()}};
 }
 load();setup();bindIdentity();renderAll();

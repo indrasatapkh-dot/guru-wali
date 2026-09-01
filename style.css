@@ -20,3 +20,5 @@ footer{padding:20px 48px 35px;color:#776b59;font-size:12px;display:flex;justify-
 @media(max-width:900px){.hero{padding:25px 20px}.identity-grid{grid-template-columns:1fr 1fr}.tabs,main{padding-left:20px;padding-right:20px}.panel{padding:22px}footer{padding:20px;display:block}.save-badge{display:none}}
 @media(max-width:600px){.identity-grid{grid-template-columns:1fr}.tabs{overflow:auto}.tab{white-space:nowrap;padding:12px 16px}.panel{padding:16px}h1{font-size:25px}}
 @media print{body{background:white}.page{max-width:none;border:0}.hero,.tabs,footer,.actions,.toolbar,.outline-btn,.danger-btn,.primary-btn,.save-badge{display:none!important}.panel{display:none!important;border:0}.panel#report{display:block!important}.report-box{border:0}}
+
+button{transition:transform .08s ease,opacity .08s ease}button:active{transform:translateY(1px);opacity:.85}
