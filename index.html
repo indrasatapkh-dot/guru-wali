@@ -54,18 +54,18 @@
 <section id="students" class="panel active">
  <div class="section-heading"><div><h2>Identitas murid dampingan</h2><p class="section-sub">Data dasar seluruh murid yang didampingi.</p></div><span class="section-chip">DATA MURID</span></div>
  <div class="table-wrap"><table><thead><tr><th>NO</th><th>NAMA MURID</th><th>NIS / NISN</th><th>KELAS</th><th>L/P</th><th>KONTAK ORANG TUA</th><th>CATATAN KHUSUS</th><th></th></tr></thead><tbody id="studentBody"></tbody></table></div>
- <div class="section-footer"><button class="outline-btn" id="addStudent">＋ Tambah murid</button><strong id="studentCount">0 murid terdaftar</strong></div>
+ <div class="section-footer"><div><button class="outline-btn" id="addStudent">＋ Tambah murid</button><button class="primary-btn" id="printStudents">🖨 Cetak identitas</button></div><strong id="studentCount">0 murid terdaftar</strong></div>
 </section>
 
 <section id="journal" class="panel">
  <div class="section-heading"><div><h2>Jurnal pembinaan murid</h2><p class="section-sub">Riwayat pembinaan dan tindak lanjut setiap murid.</p></div><span class="section-chip">JURNAL</span></div>
- <div class="toolbar"><button class="outline-btn" id="addJournal">＋ Tambah jurnal</button><button class="outline-btn" id="printJournal">Cetak jurnal</button></div>
+ <div class="toolbar"><button class="outline-btn" id="addJournal">＋ Tambah jurnal</button><button class="primary-btn" id="printJournal">🖨 Cetak jurnal</button></div>
  <div class="table-wrap"><table><thead><tr><th>TANGGAL</th><th>MURID</th><th>JENIS KEGIATAN</th><th>PERMASALAHAN / TOPIK</th><th>HASIL PEMBINAAN</th><th>TINDAK LANJUT</th><th>STATUS</th><th></th></tr></thead><tbody id="journalBody"></tbody></table></div>
 </section>
 
 <section id="development" class="panel">
  <div class="section-heading"><div><h2>Perkembangan bulanan</h2><p class="section-sub">Pantau akademik, sikap, kehadiran, dan prestasi.</p></div><span class="section-chip">MONITORING</span></div>
- <div class="toolbar"><select id="monthFilter"></select><button class="outline-btn" id="addDevelopment">＋ Catatan perkembangan</button></div>
+ <div class="toolbar"><select id="monthFilter"></select><button class="outline-btn" id="addDevelopment">＋ Catatan perkembangan</button><button class="primary-btn" id="printDevelopment">🖨 Cetak perkembangan</button></div>
  <div class="table-wrap"><table><thead><tr><th>BULAN</th><th>MURID</th><th>KEHADIRAN</th><th>AKADEMIK</th><th>SIKAP / KARAKTER</th><th>PERKEMBANGAN / PRESTASI</th><th>MASALAH</th><th>TINDAK LANJUT</th><th></th></tr></thead><tbody id="developmentBody"></tbody></table></div>
 </section>
 

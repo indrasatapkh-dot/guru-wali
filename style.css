@@ -80,3 +80,44 @@ tbody tr:hover td{background:#f2fbfd}
 .outline-btn{border-color:#e0a52c;color:#a96b10}
 footer{background:#eaf4f8}
 @media(max-width:700px){.dashboard{margin:15px 18px}.dash-stats{gap:8px}}
+
+/* ===== V6 CETAK MASING-MASING ===== */
+@media print{
+  @page{size:A4 portrait;margin:12mm}
+  body{background:#fff!important}
+  body[data-print] .page{max-width:none!important;box-shadow:none!important;border:0!important}
+  body[data-print] .hero,
+  body[data-print] .dashboard,
+  body[data-print] .tabs,
+  body[data-print] footer{display:none!important}
+  body[data-print] main{padding:0!important}
+  body[data-print] .panel{display:none!important}
+  body[data-print="students"] #students,
+  body[data-print="journal"] #journal,
+  body[data-print="development"] #development,
+  body[data-print="monthlyReport"] #monthlyReport,
+  body[data-print="semesterReport"] #semesterReport{display:block!important;box-shadow:none!important;border:0!important;padding:0!important;min-height:0!important}
+  body[data-print="recap"] #recap{display:block!important;box-shadow:none!important;border:0!important;padding:0!important;min-height:0!important}
+  body[data-print] .panel:before{display:none!important}
+  body[data-print] .toolbar,
+  body[data-print] .actions,
+  body[data-print] .section-footer button,
+  body[data-print] .section-footer strong,
+  body[data-print] .outline-btn,
+  body[data-print] .primary-btn,
+  body[data-print] .danger-btn{display:none!important}
+  body[data-print] .table-wrap{overflow:visible!important;border:0!important;box-shadow:none!important}
+  body[data-print] table{min-width:0!important;width:100%!important;font-size:9px!important}
+  body[data-print] th{font-size:8px!important;padding:6px!important}
+  body[data-print] td{font-size:8px!important;padding:5px!important}
+  body[data-print] td input,
+  body[data-print] td select,
+  body[data-print] td textarea{border:0!important;background:transparent!important;font-size:8px!important;padding:0!important}
+  body[data-print] .section-heading{margin-bottom:14px}
+  body[data-print] h2{font-size:18px!important}
+  body[data-print] .section-sub{font-size:9px!important}
+  body[data-print] .report-box{border:0!important;box-shadow:none!important;padding:0!important}
+  body[data-print] .report-box table{margin-top:8px!important}
+  body[data-print] .report-box h4{font-size:11px!important;margin:14px 0 5px!important}
+  body[data-print] .report-title{font-size:13px!important}
+}

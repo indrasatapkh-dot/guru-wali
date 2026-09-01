@@ -36,9 +36,16 @@ function setup(){
  document.getElementById("addJournal").onclick=()=>{data.journal.push({date:new Date().toISOString().slice(0,10),student:"",type:"Pembinaan",problem:"",result:"",followup:"",status:"Dipantau"});saveRender()};
  document.getElementById("addDevelopment").onclick=()=>{data.development.push({month:months[0],student:"",attendance:"",academic:"",attitude:"",progress:"",problem:"",followup:""});saveRender()};
  document.getElementById("addRecap").onclick=()=>{data.recap.push({date:new Date().toISOString().slice(0,10),student:"",type:"",result:"",followup:""});saveRender()};
- document.getElementById("printJournal").onclick=()=>{window.print()};
- document.getElementById("printMonthly").onclick=()=>{document.querySelectorAll(".panel").forEach(x=>x.classList.remove("active"));document.getElementById("monthlyReport").classList.add("active");window.print()};
- document.getElementById("printSemester").onclick=()=>{window.print()};
+ function printOnly(id){
+ document.body.setAttribute("data-print",id);
+ setTimeout(()=>{window.print();},50);
+}
+document.getElementById("printJournal").onclick=()=>printOnly("journal");
+document.getElementById("printDevelopment").onclick=()=>printOnly("development");
+document.getElementById("printStudents").onclick=()=>printOnly("students");
+document.getElementById("printMonthly").onclick=()=>printOnly("monthlyReport");
+document.getElementById("printSemester").onclick=()=>printOnly("semesterReport");
+window.addEventListener("afterprint",()=>document.body.removeAttribute("data-print"));
  document.getElementById("exportData").onclick=()=>{let a=document.createElement("a");a.href=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:"application/json"}));a.download="backup-buku-guru-wali.json";a.click();setTimeout(()=>URL.revokeObjectURL(a.href),500)};
  document.getElementById("importData").onchange=e=>{let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=()=>{try{data={...data,...JSON.parse(r.result)};saveRender();alert("Data berhasil dipulihkan.")}catch{alert("File backup tidak valid.")}};r.readAsText(f)};
  document.getElementById("clearData").onclick=()=>{if(confirm("Hapus SEMUA data aplikasi?")){localStorage.removeItem(KEY);location.reload()}};

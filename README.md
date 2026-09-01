@@ -28,3 +28,7 @@ Penyegaran tampilan dashboard, kartu statistik, navigasi tab, tabel, tombol, dan
 
 ## V5
 Tema warna SMP: biru, teal, kuning, oranye, hijau, dan ungu dengan gaya modern tetapi tetap formal untuk administrasi sekolah.
+
+
+## V6
+Setiap bagian dapat dicetak sendiri: Identitas Murid, Jurnal Pembinaan, Perkembangan Bulanan, Laporan Bulanan, dan Laporan Semester. Saat mencetak, hanya bagian yang dipilih yang muncul pada hasil cetak.
