@@ -20,3 +20,7 @@ Tidak perlu mengubah pengaturan Pages lagi jika Pages sudah aktif.
 
 ## Catatan
 Data tersimpan pada browser/perangkat. Backup data secara berkala.
+
+
+## V4
+Penyegaran tampilan dashboard, kartu statistik, navigasi tab, tabel, tombol, dan layout responsif tanpa mengubah alur data utama.
