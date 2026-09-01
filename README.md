@@ -44,3 +44,7 @@ Logo resmi yang diunggah pengguna (Lambang Kabupaten Kapuas) sudah disertakan se
 
 ## V9
 Sistem cetak diperbaiki dengan membuka lembar cetak khusus untuk bagian yang dipilih. Jadi Cetak Laporan Bulanan hanya mencetak laporan bulanan, dan Cetak Laporan Semester hanya mencetak laporan semester; bagian lain tidak ikut tercetak.
+
+
+## V10
+Perbaikan final cetak: setiap tombol membuka URL mode cetak khusus (`?print=...`) sehingga hanya satu bagian yang ditampilkan pada print preview. Laporan Bulanan dan Laporan Semester tidak lagi dapat ikut tercetak bersama bagian lain.

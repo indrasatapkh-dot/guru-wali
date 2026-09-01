@@ -149,3 +149,55 @@ footer{background:#eaf4f8}
   .print-page>.panel{display:block!important}
   .print-page .section-heading{margin-bottom:12px}
 }
+
+/* ===== V10: URL PRINT MODE - HANYA SATU BAGIAN ===== */
+@media print{
+  @page{size:A4 portrait;margin:13mm 14mm}
+  body[data-print]{background:#fff!important}
+  body[data-print] .page{max-width:none!important;width:100%!important;margin:0!important;padding:0!important;box-shadow:none!important;background:#fff!important}
+  body[data-print] .hero,
+  body[data-print] .dashboard,
+  body[data-print] .tabs,
+  body[data-print] .report-settings,
+  body[data-print] footer{display:none!important}
+  body[data-print] main{padding:0!important;margin:0!important}
+  body[data-print] main>.panel{display:none!important}
+  body[data-print="students"] #students,
+  body[data-print="journal"] #journal,
+  body[data-print="development"] #development,
+  body[data-print="recap"] #recap,
+  body[data-print="monthlyReport"] #monthlyReport,
+  body[data-print="semesterReport"] #semesterReport{
+    display:block!important;
+    margin:0!important;
+    padding:0!important;
+    min-height:0!important;
+    width:100%!important;
+    box-shadow:none!important;
+    border:0!important;
+    background:#fff!important;
+  }
+  body[data-print] .panel:before{display:none!important}
+  body[data-print] .toolbar,
+  body[data-print] .actions,
+  body[data-print] .section-footer,
+  body[data-print] .section-chip,
+  body[data-print] .outline-btn,
+  body[data-print] .primary-btn,
+  body[data-print] .danger-btn,
+  body[data-print] button,
+  body[data-print] .file-btn{display:none!important}
+  body[data-print] .table-wrap{overflow:visible!important;border:0!important;box-shadow:none!important}
+  body[data-print] table{width:100%!important;min-width:0!important}
+  body[data-print] td input,
+  body[data-print] td select,
+  body[data-print] td textarea{border:0!important;background:transparent!important;box-shadow:none!important}
+  body[data-print="monthlyReport"] #monthlyReport>.section-heading,
+  body[data-print="semesterReport"] #semesterReport>.section-heading{display:none!important}
+  body[data-print="monthlyReport"] #monthlyReport>.report-box,
+  body[data-print="semesterReport"] #semesterReport>.report-box{
+    display:block!important;width:100%!important;margin:0!important;padding:0!important;
+    border:0!important;box-shadow:none!important;
+  }
+  body[data-print] .official-letterhead{margin-top:0!important}
+}

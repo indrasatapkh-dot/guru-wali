@@ -84,51 +84,26 @@ function setup(){
  document.getElementById("addJournal").onclick=()=>{data.journal.push({date:new Date().toISOString().slice(0,10),student:"",type:"Pembinaan",problem:"",result:"",followup:"",status:"Dipantau"});saveRender()};
  document.getElementById("addDevelopment").onclick=()=>{data.development.push({month:months[0],student:"",attendance:"",academic:"",attitude:"",progress:"",problem:"",followup:""});saveRender()};
  document.getElementById("addRecap").onclick=()=>{data.recap.push({date:new Date().toISOString().slice(0,10),student:"",type:"",result:"",followup:""});saveRender()};
- async function printOnly(id){
- const target=document.getElementById(id);
- if(!target){alert("Bagian laporan tidak ditemukan.");return;}
- const win=window.open("","_blank","width=1000,height=800");
- if(!win){alert("Pop-up diblokir browser. Izinkan pop-up untuk mencetak laporan.");return;}
- const titleMap={
-  students:"Identitas Murid Dampingan",
-  journal:"Jurnal Pembinaan Murid",
-  development:"Perkembangan Bulanan",
-  recap:"Rekap Pendampingan",
-  monthlyReport:"Laporan Bulanan",
-  semesterReport:"Laporan Semester"
- };
- win.document.open();
- win.document.write(`<!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
- <title>${titleMap[id]||"Laporan Guru Wali"}</title>
- <base href="${location.href}">
- <link rel="stylesheet" href="style.css">
- <style>
-  body{background:#fff!important;margin:0!important}
-  .print-page{max-width:100%!important;margin:0!important;padding:0!important;background:#fff!important;box-shadow:none!important}
-  .print-page>.panel{display:block!important;min-height:0!important;box-shadow:none!important;border:0!important;padding:0!important}
-  .print-page .toolbar,.print-page .actions,.print-page .section-footer button,.print-page .section-footer strong,
-  .print-page .outline-btn,.print-page .primary-btn,.print-page .danger-btn,.print-page .file-btn{display:none!important}
-  .print-page .table-wrap{overflow:visible!important;border:0!important;box-shadow:none!important}
-  .print-page table{width:100%!important;min-width:0!important}
-  .print-page td input,.print-page td select,.print-page td textarea{border:0!important;background:transparent!important}
-  .print-page .section-chip{display:none!important}
-  @page{size:A4 portrait;margin:13mm 14mm}
-  @media print{body{background:#fff!important}.print-page>.panel{display:block!important}}
- </style></head><body>
- <div class="print-page"></div></body></html>`);
- win.document.close();
-
- const clone=target.cloneNode(true);
- clone.classList.remove("active");
- const removeSelectors=".toolbar,.actions,.section-footer button,.section-footer strong,.outline-btn,.primary-btn,.danger-btn,.file-btn";
- clone.querySelectorAll(removeSelectors).forEach(e=>e.remove());
- const host=win.document.querySelector(".print-page");
- host.appendChild(clone);
-
- // Wait for fonts/images/layout, then print only this isolated document.
- setTimeout(()=>{win.focus();win.print();},500);
-}document.getElementById("exportData").onclick=()=>{let a=document.createElement("a");a.href=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:"application/json"}));a.download="backup-buku-guru-wali.json";a.click();setTimeout(()=>URL.revokeObjectURL(a.href),500)};
+ function printOnly(id){
+ const allowed=["students","journal","development","recap","monthlyReport","semesterReport"];
+ if(!allowed.includes(id)) return;
+ const url=new URL(window.location.href);
+ url.searchParams.set("print",id);
+ window.open(url.toString(),"_blank","noopener,noreferrer");
+}
+function runPrintMode(){
+ const id=new URLSearchParams(window.location.search).get("print");
+ const allowed=["students","journal","development","recap","monthlyReport","semesterReport"];
+ if(!allowed.includes(id)) return;
+ document.body.setAttribute("data-print",id);
+ // Reports are rendered from the normal app state, so wait until rendering completes.
+ setTimeout(()=>{
+   window.focus();
+   window.print();
+ },700);
+}
+document.getElementById("exportData").onclick=()=>{let a=document.createElement("a");a.href=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:"application/json"}));a.download="backup-buku-guru-wali.json";a.click();setTimeout(()=>URL.revokeObjectURL(a.href),500)};
  document.getElementById("importData").onchange=e=>{let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=()=>{try{data={...data,...JSON.parse(r.result)};saveRender();alert("Data berhasil dipulihkan.")}catch{alert("File backup tidak valid.")}};r.readAsText(f)};
  document.getElementById("clearData").onclick=()=>{if(confirm("Hapus SEMUA data aplikasi?")){localStorage.removeItem(KEY);location.reload()}};
 }
-load();setup();bindIdentity();renderAll();
+load();setup();bindIdentity();renderAll();runPrintMode();
