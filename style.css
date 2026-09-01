@@ -121,3 +121,23 @@ footer{background:#eaf4f8}
   body[data-print] .report-box h4{font-size:11px!important;margin:14px 0 5px!important}
   body[data-print] .report-title{font-size:13px!important}
 }
+
+/* ===== V7 ADMINISTRASI RESMI A4 ===== */
+.report-settings{margin-top:18px}.report-setting-card{background:linear-gradient(135deg,#f7fbff,#fff9ee);border:1px solid #d9e7ef;border-radius:14px;padding:15px 18px}.setting-title{font-size:10px;letter-spacing:1.4px;font-weight:800;color:#126a88;margin-bottom:11px}.report-fields{display:grid;grid-template-columns:1.2fr 1fr 1.4fr 1.2fr 1fr;gap:12px}.report-fields label{font-size:10px;font-weight:700;color:#52687a}.report-fields input{width:100%;margin-top:6px;border:1px solid #d5e1e8;border-radius:8px;padding:9px;background:#fff;outline:none;font:inherit;font-size:12px}.report-fields input:focus{border-color:#168aad;box-shadow:0 0 0 3px rgba(22,138,173,.08)}.logo-upload{margin-top:6px;border:1px dashed #b8d6e2;border-radius:8px;padding:8px;background:#fff;min-height:35px}.logo-upload input{margin:0;border:0;padding:0;box-shadow:none}.logo-upload span{font-size:10px;color:#168aad}
+.official-letterhead{display:flex;align-items:center;justify-content:center;gap:18px;text-align:center}.logo-box{width:74px;height:74px;display:grid;place-items:center;flex:none}.logo-box img{max-width:72px;max-height:72px;object-fit:contain}.logo-placeholder{width:58px;height:58px;border:2px solid #12355b;border-radius:50%;display:grid;place-items:center;color:#12355b;font-size:9px;line-height:1.05}.logo-placeholder b{font-size:18px}.kop-text{line-height:1.18}.kop-line{font-size:11px;font-weight:700;letter-spacing:.7px}.school-name{font-size:18px;font-weight:800;letter-spacing:.5px}.school-address{font-size:9px;margin-top:3px;color:#526273}.kop-rule{height:3px;background:#12355b;border-bottom:1px solid #f2b134;margin:8px 0 8px}.report-meta{display:flex;justify-content:space-between;font-size:9px;color:#526273;margin-bottom:10px}.official-title{text-align:center;font-weight:800;font-size:13px;text-transform:uppercase;margin:8px 0 2px}.official-subtitle{text-align:center;font-size:10px;margin-bottom:13px;color:#536779}
+.signature-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;margin-top:34px;text-align:center;font-size:10px}.sign-space{height:58px}.signature-grid b{font-size:10px}
+@media(max-width:1100px){.report-fields{grid-template-columns:repeat(3,1fr)}}@media(max-width:700px){.report-fields{grid-template-columns:1fr 1fr}.signature-grid{gap:20px}}
+@media print{
+ @page{size:A4 portrait;margin:13mm 14mm 13mm 14mm}
+ body[data-print]{background:#fff!important}
+ body[data-print] .official-letterhead{margin-top:0}.school-name{font-size:16px!important}.kop-line{font-size:9px!important}.school-address{font-size:8px!important}.logo-box{width:65px;height:65px}.logo-box img{max-width:63px;max-height:63px}
+ body[data-print] .report-meta{font-size:8px!important}.official-title{font-size:12px!important}.official-subtitle{font-size:9px!important}
+ body[data-print] .report-box{font-size:9px!important;line-height:1.45!important}
+ body[data-print] .report-box table{font-size:8px!important}
+ body[data-print] .report-box th{font-size:7px!important;padding:5px!important}
+ body[data-print] .report-box td{font-size:7.5px!important;padding:4px!important}
+ body[data-print] .signature-grid{font-size:8px!important;margin-top:28px}.signature-grid b{font-size:9px!important}
+ body[data-print] #students .section-heading,
+ body[data-print] #journal .section-heading,
+ body[data-print] #development .section-heading{margin-bottom:10px}
+}

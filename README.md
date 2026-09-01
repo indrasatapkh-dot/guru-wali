@@ -32,3 +32,7 @@ Tema warna SMP: biru, teal, kuning, oranye, hijau, dan ungu dengan gaya modern t
 
 ## V6
 Setiap bagian dapat dicetak sendiri: Identitas Murid, Jurnal Pembinaan, Perkembangan Bulanan, Laporan Bulanan, dan Laporan Semester. Saat mencetak, hanya bagian yang dipilih yang muncul pada hasil cetak.
+
+
+## V7
+Format administrasi resmi A4: kop sekolah, logo sekolah yang dapat diunggah, nomor laporan, tanggal, nama/NIP Kepala Sekolah, tanda tangan Kepala Sekolah dan Guru Wali. Masing-masing laporan tetap dapat dicetak terpisah.
