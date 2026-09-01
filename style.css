@@ -15,9 +15,10 @@ footer{padding:20px 42px 35px;color:#776b59;font-size:11px;display:flex;justify-
 
 /* ===== V4 VISUAL REFRESH ===== */
 :root{
- --navy:#14253f;--navy2:#203b61;--gold:#c99a3a;--gold2:#e2b95f;
- --cream:#f8f5ed;--paper:#fff;--line:#e5dfd1;--text:#203047;
- --muted:#7a6d5a;--soft:#f1eee6;--shadow:0 12px 35px rgba(20,37,63,.08);
+ --navy:#12355b;--navy2:#176b87;--gold:#f2b134;--gold2:#ffd166;
+ --cream:#f5fbff;--paper:#fff;--line:#dbe7ef;--text:#17324d;
+ --muted:#617487;--soft:#eef7fb;--shadow:0 12px 35px rgba(18,53,91,.10);
+ --blue:#168aad;--teal:#16a6a0;--green:#43aa8b;--orange:#f4a261;--purple:#7b61a8;--red:#e76f51;
 }
 body{background:linear-gradient(135deg,#ebe8e0 0%,#f4f1e9 45%,#e9e6de 100%);}
 .page{background:linear-gradient(#fbfaf6,#f8f5ed);box-shadow:0 0 55px rgba(24,39,62,.08)}
@@ -44,3 +45,38 @@ main{padding-top:0}.panel{border:0;border-radius:0 0 16px 16px;box-shadow:var(--
 footer{background:#f1eee6;border-top:1px solid var(--line)}
 @media(max-width:1100px){.dashboard{grid-template-columns:1fr}.dash-stats{grid-template-columns:repeat(4,1fr)}}
 @media(max-width:700px){.dashboard{margin:18px}.tabs{padding-left:18px;padding-right:18px}.dash-stats{grid-template-columns:repeat(2,1fr)}main{padding-left:18px;padding-right:18px}.panel{padding:24px 18px}.section-heading{display:block}.section-chip{display:inline-block;margin-top:8px}}
+
+/* ===== V5 SMP COLOR THEME ===== */
+body{background:linear-gradient(135deg,#eaf7fb 0%,#f7fbff 45%,#fff4df 100%)}
+.page{background:linear-gradient(#ffffff,#f7fbfd)}
+.hero{background:linear-gradient(135deg,#f7fcff 0%,#fffdf7 70%);border-top-color:var(--navy)}
+.hero:before{background:linear-gradient(90deg,var(--blue),var(--teal),var(--gold),var(--orange))}
+.topline{color:#126a88;background:linear-gradient(90deg,#e7f7fb,#fff4d9);border-color:#bfe5ee}
+h1,h2{color:#123f67}
+.save-badge{color:#168aad;border-color:#168aad;background:#effbfc}
+.dashboard{position:relative}
+.welcome{background:linear-gradient(135deg,#12355b 0%,#176b87 55%,#16a6a0 100%)}
+.welcome:before{content:"";position:absolute;right:90px;bottom:-65px;width:150px;height:150px;border-radius:50%;background:rgba(242,177,52,.18)}
+.welcome-icon{background:linear-gradient(135deg,#f2b134,#ffd166);color:#12355b;border:0}
+.dash-card:nth-child(1) .dash-icon{background:#e5f6fb}.dash-card:nth-child(1) b{color:#168aad}
+.dash-card:nth-child(2) .dash-icon{background:#e7f8f5}.dash-card:nth-child(2) b{color:#14958f}
+.dash-card:nth-child(3) .dash-icon{background:#fff4df}.dash-card:nth-child(3) b{color:#e38b25}
+.dash-card:nth-child(4) .dash-icon{background:#f0eafa}.dash-card:nth-child(4) b{color:#72539d}
+.dash-card{border-top:3px solid transparent}
+.dash-card:nth-child(1){border-top-color:#168aad}.dash-card:nth-child(2){border-top-color:#16a6a0}.dash-card:nth-child(3){border-top-color:#f2b134}.dash-card:nth-child(4){border-top-color:#7b61a8}
+.tabs{border-bottom-color:#12355b}
+.tab{background:#eaf3f7;border-color:#d6e7ef}.tab:nth-child(2){background:#e8f7f5}.tab:nth-child(3){background:#fff5df}.tab:nth-child(4){background:#f0eafa}.tab:nth-child(5){background:#eaf1fb}.tab:nth-child(6){background:#fdf0ec}
+.tab:hover{filter:brightness(.98)}
+.tab.active{background:linear-gradient(135deg,#12355b,#176b87);box-shadow:0 -3px 0 #f2b134 inset}
+.panel:before{background:linear-gradient(90deg,#168aad,#16a6a0,#f2b134,#f4a261)}
+.section-chip{color:#126a88;background:#e8f7fb;border-color:#bde2eb}
+.panel:nth-child(odd) .section-chip{background:#fff4df;color:#a96b10;border-color:#efd7a6}
+th{background:linear-gradient(135deg,#12355b,#176b87)}
+th:nth-child(2){box-shadow:inset 3px 0 0 #16a6a0}
+tbody tr:hover td{background:#f2fbfd}
+.summary-cards div:nth-child(1){border-left:4px solid #168aad}.summary-cards div:nth-child(2){border-left:4px solid #16a6a0}.summary-cards div:nth-child(3){border-left:4px solid #f2b134}.summary-cards div:nth-child(4){border-left:4px solid #7b61a8}
+.summary-cards div{background:linear-gradient(135deg,#fff,#f5fbfd)}
+.primary-btn{background:linear-gradient(135deg,#12355b,#176b87)}
+.outline-btn{border-color:#e0a52c;color:#a96b10}
+footer{background:#eaf4f8}
+@media(max-width:700px){.dashboard{margin:15px 18px}.dash-stats{gap:8px}}

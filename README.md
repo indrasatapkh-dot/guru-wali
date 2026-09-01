@@ -24,3 +24,7 @@ Data tersimpan pada browser/perangkat. Backup data secara berkala.
 
 ## V4
 Penyegaran tampilan dashboard, kartu statistik, navigasi tab, tabel, tombol, dan layout responsif tanpa mengubah alur data utama.
+
+
+## V5
+Tema warna SMP: biru, teal, kuning, oranye, hijau, dan ungu dengan gaya modern tetapi tetap formal untuk administrasi sekolah.
